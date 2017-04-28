@@ -1,13 +1,14 @@
-# Database limbo
+# Database artin
 
-Status: New database, undergoing revisions
+| | |
+|---|---|
+|Description|Artin representations|
+|Status|[production](http://www.lmfdb.org/ArtinRepresentation/)|
+|Contact|[John Jones](https://github.com/jwj61)|
+|Code|[artin_representations](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/artin_representations)|
+|Collections|[representations](http://www.lmfdb.org/api/artin/representations), [field_data](http://www.lmfdb.org/api/artin/field_data)|
 
-Contact/Maintainer: John Jones
-
-Description: There are collections: artrep with Artin representations and nfgal which has corresponding information about Galois groups.  A given Galois group may have several representations, so they are separated to avoid having the same information entered repeatedly.
-
-Todo:
-* ...
+**Todo**: Add index information
 
 ## Collection representations
 * **Dim** (int): dimension
@@ -30,6 +31,11 @@ Each entry in the GaloisConjugates list is a dictionary with the following entri
 * **HardFactors**: local factors for bad primes
 * **GalOrbIndex** (ints): an index assigned to the given character
  
+## Index information for representations collection (to be added)
+
+* ...
+* **representations.rand** (auxilliary collection used for random objection access)
+
 ## Collection field_data
 * **Polynomial** (string): coefficients of a polynomial defining this field, the comma-separated list of coefficients as a string.  This is the main identifier for this field from the representations collection, and also matches entries in the number field database.
 * **TransitiveDegree** (int): degree of the polynomial

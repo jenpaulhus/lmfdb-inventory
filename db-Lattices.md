@@ -1,18 +1,16 @@
 # Database Lattices
 
-Status: Work in progress, on beta: beta.lmfdb.org/Lattice hidden link
+| | |
+|---|---|
+|**Description**|Integral lattices|
+|**Status**|[production](http://www.lmfdb.org/Lattice)|
+|**Contact**|[Samuele Anni](https://github.com/sanni85)|
+|**Code**|[lattice](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/lattice/)|
+|**Collections**|[lat](http://www.lmfdb.org/api/Lattices/lat)|
 
-Contact/Maintainer: Samuele Anni 
-
-Description: Database of integral lattices
-
-Contributors: Samuele Anni, Anna Haensch, Gabriele Nebe and Neil Sloane
+Contibutors: Samuele Anni, Anna Haensch, Gabriele Nebe, and Neil Sloane
 
 The data is coming from [here](https://github.com/annahaensch/lattice_data).
-
-Todo:
-* add L series for even dimensional lattices using the new avaliable pari functionalities
-* upload all the data from [here](https://github.com/annahaensch/lattice_data).
 
 ## Collection lat
 * **aut** (int): size of automorphism group
@@ -43,6 +41,21 @@ The LMFDB label has the following structure:
     dimension.determinant.level.class_number.number
 
 the first 4 parameters are uniquely defined, given a lattice, the last is depending on the ordering we compute/upload the data
+
+## Indexes
+
+* {'**_id_**': 1}  (created by mongo db)
+* {'**aut_1**': 1} (for searching by aut dimension)
+* {'**class_number_1**': 1} (for searching by label)
+* {'**class_number_1_dim_1**': 1} (for searching by class_number/dimension)
+* {'**det_1**': 1}, (for searching by determiant)
+* {'**dim_1**': 1}, (for searching by dimension)
+* {'**dim_1_det_1_level_1_class_number_1**': 1} (for searching by dim/det/class_number)
+* {'**dim_1_det_1_level_1_class_number_1_label_1**': 1} (for sorting search results)
+* {'**dim_1_label_1**': 1} (for searching by dim/label)
+* {'**label_1**': 1} (for searching by label)
+* {'**level_1**': 1} (for searching by level)
+* **lat.rand** (auxilliary collection used for random objection access)
 
 ### One example of lat
 

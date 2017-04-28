@@ -1,13 +1,17 @@
 # Database genus2_curves
 
-Status: In good shape over QQ (all collections synced).
 
-Contact/Maintainer: Jeroen Sijsling.
+| | |
+|---|---|
+|**Description**|Genus 2 curves over **Q**|
+|**Status**|[production](http://www.lmfdb.org/Genus2Curve/Q/)|
+|**Contact**|[Andrew Sutherland](https://github.com/AndrewVSutherland)|
+|**Code**|[genus2_curves](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/genus2_curves/)|
+|**Collections**|[curves](http://www.lmfdb.org/api/genus2_curves/curves), [endomorphisms](http://www.lmfdb.org/api/genus2_curves/endomorphisms)|
 
-Description: Genus 2 curves over QQ.
+**Contributors**: Andrew Booker, Jeroen Sijsling, Andrew Sutherland, John Voight, and Dan Yasaki
 
-Todo:
-* Match with automorphic objects.
+**Todo**: Match all automorphic friends and move data in temporary Lfunctions.instances collection to Lfunctions database.
 
 
 ## Collection curves
@@ -40,11 +44,11 @@ Todo:
 </tr>
 
 <tr>
-<td> aut_grp </td>
+<td> aut_grp_id </td>
 <td> automorphism group (specified by GAP id) </td>
-<td> list of integers </td>
+<td> string encoding list of integers, no spaces </td>
 <td> - </td>
-<td> [6, 2] </td>
+<td> u;[6,2]' </td>
 <td> </td>
 </tr>
 
@@ -78,7 +82,7 @@ Todo:
 <tr>
 <td> disc_key </td>
 <td> representation of the discriminant D of the curve: the first three digits
-are int(log_10 (D)), which is followed by digits representing the absolute
+are floor(log_10 (|D|)), which is followed by digits representing the absolute
 value of |D|. </td>
 <td> string </td>
 <td> - </td>
@@ -96,38 +100,38 @@ value of |D|. </td>
 </tr>
 
 <tr>
-<td> g2inv </td>
+<td> g2_inv </td>
 <td> G2 invariants </td>
-<td> list of strings </td>
+<td> string encoding list of strings representing rationals, no spaces </td>
 <td> - </td>
-<td> [u'-1/169', u'33/169', u'43/169'] </td>
+<td> u"['-1/169','33/169','43/169']" </td>
 <td> </td>
 </tr>
 
 <tr>
-<td> geom_aut_grp </td>
+<td> geom_aut_grp_id </td>
 <td> geometric automorphism group (shorthand) </td>
-<td> list of integers </td>
+<td> string encoding list of 2 integers, no spaces </td>
 <td> - </td>
-<td> [12, 4] </td>
+<td> u'[12,4]' </td>
 <td> </td>
 </tr>
 
 <tr>
-<td> igusa </td>
+<td> igusa_inv </td>
 <td> Igusa invariants </td>
-<td> list of strings </td>
+<td> string encoding list of strings representing integers, no spaces </td>
 <td> - </td>
-<td> [u'1', u'-33', u'-43', u'-283', u'-169'] </td>
+<td> u"['1','-33','-43','-283','-169']" </td>
 <td> </td>
 </tr>
 
 <tr>
-<td> igusa_clebsch </td>
+<td> igusa_clebsch_inv </td>
 <td> Igusa-Clebsch invariants </td>
-<td> list of strings </td>
+<td> string encoding list of strings representing integers </td>
 <td> - </td>
-<td> [u'8', u'3172', u'30056', u'-692224'] </td>
+<td> u"['8','3172','30056','-692224']" </td>
 <td> </td>
 </tr>
 
@@ -150,11 +154,11 @@ value of |D|. </td>
 </tr>
 
 <tr>
-<td> min_eqn </td>
-<td> representation of defining polynomials </td>
-<td> list of lists of integers </td>
+<td> eqn </td>
+<td> coefficients of minimal equation y^2+h(x)y=f(x) </td>
+<td> string representing list of 2 lists of integers, no spaces</td>
 <td> - </td>
-<td> [[0, 0, 0, 0, 1, 1], [1, 1, 0, 1]] </td>
+<td> u'[[0,0,0,0,1,1],[1,1,0,1]] </td>
 <td> </td>
 </tr>
 
@@ -186,13 +190,13 @@ value of |D|. </td>
 </tr>
 
 <tr>
-<td> torsion </td>
+<td> torsion_subgroup </td>
 <td> rational torsion group of the Jacobian, represented by the invariant
 factors [d_1, d_2, ...] for which this torsion group is isomorphic to ZZ / d_1
 ZZ x ZZ / d_2 ZZ x ...  </td>
-<td> list of integers </td>
+<td> string encoding list of integers, no spaces </td>
 <td> - </td>
-<td> [19] </td>
+<td> u'[2,2,4]' </td>
 <td> </td>
 </tr>
 
@@ -252,6 +256,27 @@ ZZ x ZZ / d_2 ZZ x ...  </td>
 
 </table>
 
+### Index information for curves collection
+
+* abs_disc -- search/browse
+* analytic_rank -- search/browse
+* aut_grp_id -- search/browse
+* class -- list curves in isogeny class
+* cond -- search/browse
+* cond/class/disc_key/label -- sort order (all ascending)
+* disc_key -- search/browse
+* g2_inv -- list twists
+* geom_aut_grp_id -- search/browse
+* has_square_sha -- search/browse
+* is_gl2_type -- search/browse
+* is_simple_geom -- search/browse
+* label -- search
+* locally_solvable -- search/browse
+* real_geom_end_alg -- search/browse (ST^0)
+* st_group -- search/browse
+* torsion_order -- search_browse
+* torsion_subgroup -- search/browse
+* curves.rand (auxilliary collection used for random objection access)
 
 ## Collection endomorphisms
 
@@ -497,117 +522,13 @@ Jacobian is defined </td>
 
 <tr>
 <td> st_group_geom </td>
-<td> Sato-Tate group over the algebraic closure </td>
+<td> Sato-Tate group over the algebraic closure (equivalently, its identity component) </td>
 <td> string </td>
 <td> - </td>
 <td> E_1 </td>
 <td> </td>
 </tr>
 
-</table>
-
-
-## Collection isogeny-classes
-
-* Content: Isogeny classes of genus 2 curves over QQ.
-* Contributors: Andrew Sutherland.
-* Origin: Code by Andrew Sutherland.
-* Extent: Data known for all curves in the genus 2 curves database.
-
-
-<table border=2>
-
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Type of stored data</th>
-<th>Mathematical type</th>
-<th>Example of stored data</th>
-<th>Remarks</th>
-</tr>
-
-<tr>
-<td> _id </td>
-<td> Mongo id </td>
-<td> ObjectId </td>
-<td> - </td>
-<td> </td>
-<td> assigned my Mongo; contains creation timestamp</td>
-</tr>
-
-<tr>
-<td> analytic_rank </td>
-<td> analytic rank upper bound of the curves in the isogeny class (believed to be tight, known for rank 0,1) </td>
-<td> integer </td>
-<td> NN_0 </td>
-<td> 0</td>
-<td> </td>
-</tr>
-
-<tr>
-<td> bad_lfactors </td>
-<td> bad primes and the corresponding L-factors </td>
-<td> list of pairs [p, [a0, ...] where p is a bad prime and [a0,...] are coefficients of the L-factor at p</td>
-<td> - </td>
-<td> [[13, [1, 5, 13]]] </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> cond </td>
-<td> conductor </td>
-<td> integer </td>
-<td> NN </td>
-<td> 169 </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> hash </td>
-<td> L-function hash value (integer mod 2^61-1), deprecated (use Lhash) </td>
-<td> Z/2^61-1Z </td>
-<td> - </td>
-<td> 1456780685049277288L </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> Lhash </td>
-<td> L-function hash value (decimal string) </td>
-<td> string </td>
-<td> - </td>
-<td> u'1456780685049277288' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> is_gl2_type </td>
-<td> whether the curves in the isogeny class are of GL2-type over its base
-field </td>
-<td> boolean </td>
-<td> - </td>
-<td> True </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> label </td>
-<td> LMFDB label of the isogeny class </td>
-<td> string </td>
-<td> - </td>
-<td> u'169.a' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> real_geom_end_alg </td>
-<td> endomorphism ring over base field tensored with RR </td>
-<td> string </td>
-<td> - </td>
-<td> u'M_2(R)' </td>
-<td> </td>
-</tr>
-
 <tr>
 <td> root_number </td>
 <td> root number </td>
@@ -618,235 +539,15 @@ field </td>
 </tr>
 
 <tr>
-<td> st_group </td>
-<td> Sato-Tate group </td>
-<td> string </td>
-<td> - </td>
-<td> u'E_6' </td>
-<td> </td>
-</tr>
-
-</table>
-
-
-
-## Collection Lfunctions
-
-* Content: L-functions for genus 2 curves over QQ.
-* Contributors: Andrew Booker.
-* Origin: Code by Andrew Booker.
-* Extent: Data known for all curves in the genus 2 curves database. First
-  zeroes and L-factors (primes up to 100) known.
-
-
-<table border=2>
-
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Type of stored data</th>
-<th>Mathematical type</th>
-<th>Example of stored data</th>
-<th>Remarks</th>
-</tr>
-
-<tr>
-<td> _id </td>
-<td> Mongo id </td>
-<td> ObjectId </td>
-<td> - </td>
-<td> </td>
-<td> assigned my Mongo; contains creation timestamp</td>
-</tr>
-
-<tr>
-<td> algebraic </td>
-<td> whether the L-function is algebraic or not </td>
-<td> boolean </td>
-<td> - </td>
-<td> True </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> analytic_normalization </td>
-<td> translation needed to obtain the analytic normalization </td>
-<td> string </td>
-<td> - </td>
-<td> u'1/2' </td>
-<td> </td>
-</tr>
-
-<tr>
 <td> bad_lfactors </td>
 <td> bad primes and the corresponding L-factors </td>
-<td> list of lists </td>
+<td> string encoding list of pairs [p,c] where p is a bad prime and c is a list of the coefficients of the Euler factor at p </td>
 <td> - </td>
 <td> [[13, [1, 5, 13]]] </td>
 <td> </td>
 </tr>
 
-<tr>
-<td> central_character </td>
-<td> central character </td>
-<td> string </td>
-<td> - </td>
-<td> u'169.1' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> coefficient_field </td>
-<td> LMFDB label of the coefficient field </td>
-<td> string </td>
-<td> - </td>
-<td> '1.1.1.1'' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> conductor </td>
-<td> conductor </td>
-<td> integer </td>
-<td> NN </td>
-<td> 169 </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> degree </td>
-<td> degree </td>
-<td> integer </td>
-<td> NN </td>
-<td> 4 </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> euler_factors </td>
-<td> Euler factors for primes up to 100 </td>
-<td> string </td>
-<td> - </td>
-<td> u'[[1, 3, 5, 6, 4], ... ] </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> gamma_factors </td>
-<td> Gamma factors </td>
-<td> string </td>
-<td> - </td>
-<td> u'[[],[0,0]]' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> hash </td>
-<td> hash </td>
-<td> hash </td>
-<td> - </td>
-<td> 1456780685049277288L </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> instances </td>
-<td> where the L-function occurs </td>
-<td> list of strings </td>
-<td> - </td>
-<td> [u'/L/Genus2Curve/Q/169/a'] </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> motivic_weight </td>
-<td> motivic weight </td>
-<td> integer </td>
-<td> NN_0 </td>
-<td> 0 </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> order_of_vanishing </td>
-<td> order of vanishing at critical point (analytic rank bound) </td>
-<td> integer </td>
-<td> NN_0 </td>
-<td> 0 </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> origin </td>
-<td> a genus 2 isogeny that is the source of the L-function; note that not only
-may there be other sources, but these are expected always to exist </td>
-<td> string </td>
-<td> - </td>
-<td> u'/L/Genus2Curve/Q/169/a' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> plot </td>
-<td> description of a plot of the curve </td>
-<td> string </td>
-<td> - </td>
-<td> u'[[-30.0000,2.942647259768447], ... ] </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> primitive </td>
-<td> whether the L-function is primitive </td>
-<td> boolean </td>
-<td> - </td>
-<td> False </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> root_number </td>
-<td> root number </td>
-<td> string </td>
-<td> - </td>
-<td> u'1' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> self-dual </td>
-<td> whether the L-function is self-dual </td>
-<td> boolean </td>
-<td> - </td>
-<td> True </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> special_values </td>
-<td> special values of the L-function </td>
-<td> string </td>
-<td> - </td>
-<td> u'[[1,0.09049039083242963]]' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> st_group </td>
-<td> Sato-Tate group </td>
-<td> string </td>
-<td> - </td>
-<td> u'E_6' </td>
-<td> </td>
-</tr>
-
-<tr>
-<td> zeroes </td>
-<td> first zeroes (symmetric) </td>
-<td> string </td>
-<td> - </td>
-<td> u'[-19.33846444803068, ... ] </td>
-<td> </td>
-</tr>
-
 </table>
+
+### Index information for endomorphisms collection:
+* label -- lookup

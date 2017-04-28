@@ -1,295 +1,43 @@
 # LMFDB Database Inventory
 
 ## Layers
-
-* Database:
-* Collection:
-* Documents: (the entries in the Collection)
-* Fields: name, type, nested, ...
-   possible types:
-   * associations (dictionary), and nested dictionaries
-   * string
-   * integer
-   * double
-   * list of integer, list of strings, list of doubles, ...
-   * boolean
-
-## Databases:
-
-This is just an overview, for detailed information see specific files
-in the `database-inventory` subdirectory.
-
-### HTPicard
-
-Description: ???
-
-Owner(s): ???
-
-### Lattices
-
-Description: Database of integral lattices
-
-Owner(s): Anna Haensch, Samuele Anni
-
-### Lfunction
-
-Description: ?
-
-Owner(s): Farmer, Lemurell
-
-
-### Lfunctions
-
-Description: 
-
-Owner(s): David Farmer 
-
-
-### MaassWaveForm
-
-Description: 
-
-Owner(s): 
-
-
-### MaassWaveForms
-
-Description: 
-
-Owner(s): 
-
-
-### SL2Zsubgroups
-
-Description: 
-
-Owner(s): 
-
-
-### WebNewForms
-
-Description: obsolete?
-
-Owner(s): 
-
-
-### admin
-
-Description: 
-
-Owner(s): 
-
-
-### ap_statistics
-
-Description: 
-
-Owner(s): 
-
-### artin
-
-Description: 
-
-Owner(s): 
-
-
-### bmfs
-
-Description: Bianchi modular forms
-
-Owner(s): John Cremona
-
-
-### contrib
-
-Description: contributed data
-
-Owner(s): 
-
-
-### elliptic_curves
-
-Description: Elliptic curves over Q and other number fields
-
-Owner(s): John Cremona
-
-### genus2_curves
-
-Description: Curves of genus 2 over QQ
-
-Owner(s): Andrew Booker, Jeroen Sijsling, Andrew Sutherland, Dan Yasaki, John Voight
-
-### halfintegralmf
-
-Description: Modular forms of half integral weight
-
-Owner(s): Samuele Anni
-
-
-### hgm
-
-Description: Hypergeometric motives
-
-Owner(s): David Roberts
-
-
-### hmfs
-
-Description: Hilbert modular forms
-
-Owner(s): John Voight, John Cremona
-
-
-### knowledge
-
-Description: Knowledge database
-
-Owner(s): LMFDB developers
-
-
-### limbo
-
-Description: obsolete?
-
-Owner(s): 
-
-
-### local
-
-Description: mongo internal
-
-Owner(s): nobody
-
-
-### localfields
-
-Description: Local fields
-
-Owner(s): John Jones
-
-### mod_l_eigenvalues
-
-Description: 
-
-Owner(s): 
-
-
-### modforms
-
-Description: obsolete
-
-Owner(s): 
-
-### modularforms
-
-Description: obsolete?
-
-Owner(s): 
-
-### modularforms2
-
-Description: current databae of classical modular forms of all
-weigths, levels and characters
-
-Owner(s): Fredrik Stromberg, Stephan Ehlen
-
-
-### modularforms_2010
-
-Description: obsolete
-
-Owner(s): 
-
-### modularforms_raw
-
-Description: obsolete?
-
-Owner(s): 
-
-
-### mwf_dbname
-
-Description: obsolete?
-
-Owner(s): 
-
-
-### numberfields
-
-Description: Number fields
-
-Owner(s): John Jones
-
-
-### quadratic_twists
-
-Description: obsolete?
-
-Owner(s): 
-
-### sato_tate_groups
-
-Description: Sato-Tate groups
-
-Contact/Maintainer: Andrew Sutherland
-
-
-
-### siegel_modular_forms
-
-Description: Siegel modular forms
-
-Owner(s): Nils Skoruppa
-
-
-### siegel_modular_forms_experimental
-
-Description: 
-
-Owner(s): 
-
-
-### test_long_int
-
-Description: obsolete? dropped?
-
-Owner(s): 
-
-
-### test
-
-Description: obsolete?
-
-Owner(s): 
-
-
-### test_pdehaye
-
-Description: ? dropped? 
-
-Owner(s): Paul Dehaye
-
-
-### transitivegroups
-
-Description: 
-
-Owner(s): 
-
-
-### upload
-
-Description: 
-
-Owner(s): 
-
-
-### userdb
-
-Description: Database of registered LMFDB users
-
-Owner(s): 
-
-
-
-
+* Mongo DB (contains databases)
+* Database (contains collections)
+* Collection (contains documents, aka records)
+* Document (contains fields aka attributes)
+* Field (a string, integer, float, boolean, dictionary, list, ...)
+
+## Databases
+
+The table below summarizes the various mongo db databases in the LMFDB.  Click links for more detailed information.
+Database status is indicated by one of:
+* prod -- visible on [www.lmfdb.org](http://www.lmfdb.org)
+* beta -- visible on [beta.lmfb.org](http://beta.lmfdb.org)
+* alpha -- available on [beta.lmfdb.org](http://beta.lmfdb.org) via direct URL access but not visible
+* future -- in developement but not currently loaded by [website.py](https://github.com/LMFDB/lmfdb/blob/master/lmfdb/website.py)
+
+|database|status|contact|code|collections|
+|---|---|---|---|---|
+|[HTPicard](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-HTPicard.md)|[future](https://github.com/LMFDB/lmfdb/issues/1431#issuecomment-225549206)|[David Farmer](https://github.com/davidfarmer)|[picard/](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/modular_forms/maass_forms/picard/)|[picard](http://beta.lmfdb.org/api/HTPicard/picard)|
+|[Lattices](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-Lattices.md)|[production](http://www.lmfdb.org/Lattice)|[Samuele Anni](https://github.com/sanni85)|[lattice](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/lattice/)|[lat](http://www.lmfdb.org/api/Lattices/lat)|
+|[Lfunctions](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-Lfunctions.md)|[production](http://www.lmfdb.org/L/)|[Jonathan Bober](https://github.com/jwbober), [David&nbsp;Farmer](https://github.com/davidfarmer)|[lfunctions](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/lfunctions)|[instances](http://www.lmfdb.org/api/Lfunctions/instances), [Lfunctions](http://www.lmfdb.org/api/Lfunctions/Lfunctions)|
+|[MaassWaveForms](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-MaassWaveForms.md)|[production](http://www.lmfdb.org/ModularForm/GL2/Q/Maass/)|[Stefan Lemurell](https://github.com/lemurell), [Fredrik&nbsp;Strömberg](https://github.com/fredstro)|[maass_waveforms](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/modular_forms/maass_forms/maass_waveforms/)|to be added|
+|[SL2Zsubgroups](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-SL2Zsubgroups.md)|[future](https://github.com/LMFDB/lmfdb/issues/1407)|[Stefan Ehlen](https://github.com/sehlen)|[emf_utils.py](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/modular_forms/elliptic_modular_forms/backend/emf_utils.py)|[groups](http://beta.lmfdb.org/api/SL2Zsubgroups/groups)|
+|[abvar](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-abvar.md)|[beta](http://beta.lmfdb.org/Variety/Abelian/Fq/)|[David Roe](https://github.com/roed314)|[abvar/fq](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/abvar/fq)|[fq_iosg](http://beta.lmfdb.org/api/abvar/fq_isog)|
+|[artin](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-artin.md)|[production](http://www.lmfdb.org/ArtinRepresentation/)|[John Jones](https://github.com/jwj61)|[artin_representations](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/artin_representations)|[representations](http://www.lmfdb.org/api/artin/representations), [field_data](http://www.lmfdb.org/api/artin/field_data)|
+|[bmfs](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-bmfs.md)|[future](https://github.com/LMFDB/lmfdb/issues/1431#issuecomment-225529987)|[John Cremona](https://github.com/JohnCremona)|none|[dimensions](http://beta.lmfdb.org/api/bmfs/dimensions)|
+|[curve_automorphisms](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-curve_automorphisms.md)|[alpha](http://beta.lmfdb.org/HigherGenus/C/aut/)|[Jen Paulhus](https://github.com/jenpaulhus)|[higher_..._automorphisms](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/higher_genus_w_automorphisms)|[passports](http://beta.lmfdb.org/api/curve_automorphisms/passports)|
+|[elliptic_curves](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-elliptic_curves.md)|[production](http://www.lmfdb.org/EllipticCurve/)|[John Cremona](https://github.com/JohnCremona)|[elliptic_curves](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/elliptic_curves/)|[curves](http://www.lmfdb.org/api/elliptic_curves/curves), [nfcurves](http://www.lmfdb.org/api/elliptic_curves/nfcurves), [padic_db](http://www.lmfdb.org/api/elliptic_curves/padic_db)|
+|[genus2_curves](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-genus2_curves.md)|[production](http://www.lmfdb.org/Genus2Curve/Q/)|[Andrew Sutherland](https://github.com/AndrewVSutherland)|[genus2_curves](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/genus2_curves/)|[curves](http://www.lmfdb.org/api/genus2_curves/curves), [endomorphisms](http://www.lmfdb.org/api/genus2_curves/endomorphisms)|
+|[halfintegralmf](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-halfintegralmf.md)|[alpha](http://beta.lmfdb.org/ModularForm/GL2/Q/holomorphic/half/)|[Samuele Anni](https://github.com/sanni85)|[half_integral_weight_forms](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/half_integral_weight_forms)|[forms](http://beta.lmfdb.org/api/halfintegralmf/forms)|
+|[hgm](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-hgm.md)|[beta](http://beta.lmfdb.org/Motive/Hypergeometric/Q/)|[John Jones](https://github.com/jwj61)|[motives](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/motives)|[families](http://beta.lmfdb.org/api/hgm/families), [motives](http://beta.lmfdb.org/api/hgm/motives)|
+|[hmfs](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-hmfs.md)|[production](http://www.lmfdb.org/ModularForm/GL2/TotallyReal/)|[John Voight](https://github.com/jvoight)|[hilbert_modular_forms](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/hilbert_modular_forms)|[fields](http://www.lmfdb.org/api/hmfs/fields), [forms](http://www.lmfdb.org/api/hmfs/forms)|
+|[knowledge](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-knowledge.md)|[production](http://www.lmfdb.org/knowledge)|[David Farmer](https://github.com/davidfarmer)|[knowledge](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/knowledge/)|[meta](http://www.lmfdb.org/api/knowledge/meta), [knowls](http://www.lmfdb.org/api/knowledge/knowls), [deleted_knowls](http://www.lmfdb.org/api/knowledge/deleted_knowls), [history](http://www.lmfdb.org/api/knowledge/history)|
+|[localfields](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-localfields.md)|[production](http://www.lmfdb.org/LocalField)|[John Jones](https://github.com/jwj61)|[local_fields](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/local_fields)|[fields](http://www.lmfdb.org/api/local_fields/fields)|
+|[mod_l_eigenvalues](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-mod_l_eigenvalues.md)|[alpha](http://beta.lmfdb.org/ModularForm/GL2/ModL/)|[Samuele Anni](https://github.com/sanni85)|[modlmf](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/modlmf)|[modlmf](http://beta.lmfdb.org/api/mod_l_eigenvalues/modlmf)|
+|[mod_l_galois](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-mod_l_galois.md)|[alpha](http://beta.lmfdb.org/Representation/Galois/ModL/)|[Samuele Anni](https://github.com/sanni85)|[rep_galois_modl](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/rep_galois_modl)|[reps](http://beta.lmfdb.org/api/mod_l_galois/reps)|
+|[modularforms2](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-modularforms2.md)|[production](http://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/)|[Stefan Ehlen](https://github.com/sehlen), [Fredrik Strömberg](https://github.com/fredstro)|[elliptic_modular_forms](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/modular_forms/elliptic_modular_forms)|[dimension_table](http://www.lmfdb.org/api/modularforms2/dimension_table), [webchar](http://www.lmfdb.org/api/modularforms2/webchar), [webchar.chunks](http://www.lmfdb.org/api/modularforms2/webchar.chunks), [webchar.files](http://www.lmfdb.org/api/modularforms2/webchar.files), [webmodformspace](http://www.lmfdb.org/api/modularforms2/webnewforms), [webnewformspace.chunks](http://www.lmfdb.org/api/modularforms2/webmodformspace.chunks), [webnewformspace.files](http://www.lmfdb.org/api/modularforms2/webmodformspace.files), [webnewforms](http://www.lmfdb.org/api/modularforms2/webnewforms), [webnewforms.chunks](http://www.lmfdb.org/api/modularforms2/webnewforms.chunks), [webnewforms.files](http://www.lmfdb.org/api/modularforms2/webnewforms.files), [webeigenvalues](http://www.lmfdb.org/api/modularforms2/webeigenvalues.files), [webeigenvalues.files](http://www.lmfdb.org/api/modularforms2/webeigenvalues.files)|
+|[numberfields](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-numberfields.md)|[production](http://www.lmfdb.org/NumberField)|[John Jones](https://github.com/jwj61)|[number_fields](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/number_fields)|[fields](http://www.lmfdb.org/api/numberfields/fields)|
+|[sato_tate_groups](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-sato_tate_groups.md)|[production](http://www.lmfdb.org/SatoTateGroup)|[Andrew Sutherland](https://github.com/AndrewVSutherland)|[sato_tate_groups](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/sato_tate_groups/)|[st_groups](http://www.lmfdb.org/api/sato_tate_groups/st_groups), [st0_groups](http://www.lmfdb.org/api/sato_tate_groups/st_groups), [small_groups](http://www.lmfdb.org/api/sato_tate_groups/small_groups)|
+|[siegel_modular_forms](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-siegel_modular_forms.md)|[production](http://www.lmfdb.org/ModularForm/GSp/Q/)|[Nils&nbsp; Skouruppa](https://github.com/nilsskoruppa)|[siegel_modular_forms](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/siegel_modular_forms)|[dimensions](http://www.lmfdb.org/api/siegel_modular_forms/dimensions), [samples](http://www.lmfdb.org/api/siegel_modular_forms/samples)|
+|[transitivegroups](https://github.com/LMFDB/lmfdb-inventory/blob/master/db-transitivegroups.md)|[production](http://www.lmfdb.org/GaloisGroup)|[John Jones](https://github.com/jwj61)|[galois_groups](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/galois_groups)|[groups](http://www.lmfdb.org/api/transitivegroups/groups), [Gmodules](http://www.lmfdb.org/api/transitivegroups/Gmodules)|

@@ -1,25 +1,27 @@
 # Database Lfunctions
 
-Status:
+| | |
+|---|---|
+|**Description**|L-functions|
+|**Status**|[production](http://www.lmfdb.org/L/)|
+|**Contact**|[Jonathan Bober](https://github.com/jwbober), [David Farmer](https://github.com/davidfarmer)|
+|**Code**|[lfunctions](https://github.com/LMFDB/lmfdb/tree/master/lmfdb/lfunctions)|
+|**Collections**|[instances](http://www.lmfdb.org/api/Lfunctions/instances), [Lfunctions](http://www.lmfdb.org/api/Lfunctions/Lfunctions)|
 
-Contact/Maintainer: Jonathan Bober
+**Todo**: Document indexes for Lfunctions (some appear to be obsolete or never used)
 
-Description:
-
-Todo:
-* ...
-
-
-## Collection first_zeros_testing
-* To delete...
-
-## Collection Instances
+## Collection instances
 
 | Field | type | Example|
 |----------|    ------     | -----   |
 |`url`| string | 'EllipticCurve/Q/162/d'|
 |`Lhash`| string |    | 
 |`type`| string | 'ECQ' or 'G2Q' or 'DIR' or ...|
+
+Indexes for instances collection:
+* **Lhash**: lookup by L-function hash (used to find all objects with the same L-function)
+* **url**: lookup by object homepage URL
+* **type**: used to filter instances by type
 
 ## Collection Lfunctions
 | Field | type | Example|
